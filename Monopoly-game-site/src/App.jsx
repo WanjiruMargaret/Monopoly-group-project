@@ -1,35 +1,53 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from "react";
+import Dice from "./components/DiceForm";
+import Board from "./components/Board";
+import PlayerPanel from "./components/PlayerPanel";
+import { handlePlayerMove } from "./Utilis/MovePlayer";
+import propertiesData from "./data/Properties";
+import { rollDice, initialPlayers } from "./Utilis/GameUtilis"; // ✅ keep this
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  const [players, setPlayers] = useState(initialPlayers);
+  const [currentPlayerIndex, setCurrentPlayerIndex] = useState(0);
+  const [dice, setDice] = useState([1, 1]);
+  const [properties, setProperties] = useState(propertiesData);
+
+  const handleDiceRoll = () => {
+    const [die1, die2] = rollDice(); // ✅ use imported rollDice
+    setDice([die1, die2]);
+    movePlayer(die1 + die2);
+  };
+
+  const movePlayer = (steps) => {
+    setPlayers((prevPlayers) => {
+      const updated = [...prevPlayers];
+      const player = updated[currentPlayerIndex];
+
+      // Skip if player is bankrupt
+      if (player.isBankrupt) return updated;
+
+      // Skip turn if in jail
+      if (player.turnsInJail > 0) {
+        player.turnsInJail -= 1;
+        updated[currentPlayerIndex] = player;
+        return updated;
+      }
+
+      // Normal move
+      const updatedPlayer = handlePlayerMove(player, steps, properties, setProperties, updated);
+      updated[currentPlayerIndex] = updatedPlayer;
+      return updated;
+    });
+
+    setCurrentPlayerIndex((i) => (i + 1) % players.length);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="app">
+      <h1>Monopoly Game MVP</h1>
+      <Dice dice={dice} onRoll={handleDiceRoll} />
+      <Board players={players} />
+      <PlayerPanel players={players} />
+    </div>
+  );
 }
-
-export default App
