@@ -1,10 +1,13 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
+import './GameStartScreen.css'
 
-createRoot(document.getElementById('root')).render(
+
+
+import GameStartScreen from './GameBoard/StartScreen'
+const root = createRoot(document.getElementById('root'))
+root.render(
   <StrictMode>
-    <App />
-  </StrictMode>,
+    <GameStartScreen />
+  </StrictMode>
 )
