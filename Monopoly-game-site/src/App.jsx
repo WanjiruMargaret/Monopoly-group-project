@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import Dice from "./components/DiceForm";
-import Board from "./components/Board";
-import PlayerPanel from "./components/PlayerPanel";
-import { handlePlayerMove } from "./Utilis/MovePlayer";
+import Dice from "./logicComponents/DiceForm";
+import Board from "./logicComponents/Board";
+import PlayerPanel from "./logicComponents/PlayerPanel";
+import { handlePlayerMove } from "./utilis/MovePlayer";
 import propertiesData from "./data/Properties";
-import { rollDice, initialPlayers } from "./Utilis/GameUtilis"; // ✅ keep this
+import { rollDice, initialPlayers } from "./utilis/GameUtilis"; // ✅ keep this
 
 export default function App() {
   const [players, setPlayers] = useState(initialPlayers);
