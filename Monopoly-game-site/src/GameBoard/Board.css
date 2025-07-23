@@ -1,73 +1,102 @@
-.monopoly-board {
-  margin: 20px auto;
-  max-width: 800px;
-  text-align: center;
-}
-
-.board-container {
+.board-wrapper {
   display: flex;
-  flex-wrap: wrap;
-  border: 2px solid #000;
-  margin: 20px auto;
-  max-width: 700px;
-  background-color: #C1E1C1; /* Light green background */
+  justify-content: center;
+  align-items: center;
+  width: 100vw; height: 100vh;
+  background: #e0e0e0;
 }
 
-.board-space {
-  width: 120px;
-  height: 120px;
-  border: 1px solid #333;
-  padding: 10px;
-  margin: 5px;
-  background-color: white;
+.board-grid {
+  display: grid;
+  grid-template-columns: repeat(11, 60px);
+  grid-template-rows: repeat(11, 60px);
+  position: relative;
+  background: #fff;
+  border: 8px solid #333;
+}
+
+.board-cell {
+  border: 1px solid #999;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  align-items: center;
+  font-size: 10px;
+  padding: 2px;
+  position: relative;
 }
 
-.space-name {
+.space {
+  text-align: center;
+}
+
+.space.corner {
+  background: #f9f9f9;
   font-weight: bold;
-  font-size: 14px;
-}
-
-.space-price, .space-tax {
   font-size: 12px;
-  color: #555;
 }
 
-/* Special spaces */
-.go {
-  background-color: #f8f8f8;
-  border: 2px solid red;
+.space.property {
+  background: #fafafa;
 }
 
-.jail {
-  background-color: #f8f8f8;
-  border: 2px solid #333;
+.space.railroad, .space.utility {
+  background: #f0f0f0;
 }
 
-.chance-1 {
-  background-color: #FFA500;
+.space.special {
+  background: #fdf7e2;
 }
 
-.community-chest-1 {
-  background-color: #87CEEB;
+.space.tax {
+  background: #f6e7e7;
 }
 
-/* Property colors */
-.mediterranean, .baltic {
-  border-top: 10px solid brown;
+.space-label {
+  margin-top: 2px;
 }
 
-.oriental, .vermont, .connecticut {
-  border-top: 10px solid lightblue;
+.space-icon {
+  display: block;
+  font-size: 16px;
 }
 
-.reading-rr {
-  background-color: #f0f0f0;
+.space-details {
+  font-size: 9px;
+  margin-bottom: 2px;
 }
 
-.income-tax {
-  background-color: #f0f0f0;
+/* Player tokens */
+.token {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+}
+
+/* Center panel overlays bottom-left 2×2 cells */
+.roll-btn, .player-info {
+  position: absolute;
+  width: calc(60px * 4);
+  height: calc(60px * 2.5);
+  background: rgba(255, 255, 255, 0.9);
+  text-align: center;
+  border: 2px solid #666;
+}
+
+.roll-btn {
+  bottom: 5px;
+  left: 5px;
+  cursor: pointer;
+}
+
+.player-info {
+  bottom: 5px;
+  right: 5px;
+}
+
+.roll-btn:hover {
+  background: #eee;
 }
