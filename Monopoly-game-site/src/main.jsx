@@ -9,7 +9,7 @@ import GameStartScreen from './GameBoard/StartScreen'
 const root = createRoot(document.getElementById('root'))
 root.render(
   <StrictMode>
-    <App/>
     <GameStartScreen />
+     <App/>
   </StrictMode>
 )
