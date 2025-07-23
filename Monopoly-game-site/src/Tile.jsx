@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { handleTileAction } from './GameLogic';
 
