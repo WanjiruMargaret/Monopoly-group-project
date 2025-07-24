@@ -1,0 +1,171 @@
+/* Base styling */
+.start-screen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  transition: background-color 0.5s ease, color 0.5s ease;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Light mode */
+.start-screen.light {
+  background: linear-gradient(135deg, #a8e6cf 0%, #dcedc1 50%, #ffffd8 100%);
+  color: #1a1a1a;
+}
+
+/* Dark mode */
+.start-screen.dark {
+  background: linear-gradient(135deg, #1f2937 0%, #374151 50%, #111827 100%);
+  color: #d1d5db;
+}
+
+.mode-toggle-container {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+}
+
+.mode-toggle-btn {
+  background-color: transparent;
+  border: 2px solid currentColor;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.mode-toggle-btn:hover,
+.mode-toggle-btn:focus {
+  background-color: rgba(255, 255, 255, 0.1);
+  outline: none;
+}
+
+/* Title */
+.title-container {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.game-title {
+  font-size: 5rem;
+  font-weight: 900;
+  margin: 0;
+  text-shadow: 2px 2px 8px rgba(255, 0, 0, 0.7);
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  margin-top: 0.5rem;
+  font-weight: 500;
+}
+
+/* Buttons container */
+.buttons-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 250px;
+  text-align: center;
+}
+
+.start-button,
+.tutorial-button {
+  font-size: 1.25rem;
+  padding: 0.75rem 1rem;
+  border-radius: 9999px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+/* Start button */
+.start-button {
+  background-color: #dc2626; /* red-600 */
+  color: white;
+  box-shadow: 0 4px 6px rgba(220, 38, 38, 0.6);
+}
+
+.start-button:hover,
+.start-button:focus {
+  background-color: #b91c1c; /* red-700 */
+  outline: none;
+  box-shadow: 0 6px 10px rgba(185, 28, 28, 0.8);
+}
+
+/* Tutorial button */
+.tutorial-button {
+  background: none;
+  color: #16a34a; /* green-600 */
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.tutorial-button:hover,
+.tutorial-button:focus {
+  color: #15803d; /* green-700 */
+  outline: none;
+}
+
+/* Modal overlay */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* Modal content */
+.modal-content {
+  background-color: var(--modal-bg, white);
+  color: var(--modal-text, #1a1a1a);
+  border-radius: 12px;
+  padding: 2rem 2.5rem;
+  max-width: 600px;
+  width: 90%;
+  position: relative;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+  font-size: 1rem;
+  line-height: 1.6;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Modal close button */
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2.5rem;
+  font-weight: bold;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+  color: #dc2626;
+  outline: none;
+}
+
+/* Tutorial list */
+.tutorial-list {
+  margin-top: 1rem;
+  padding-left: 1.5rem;
+  list-style-type: disc;
+}
+
+/* Dark mode modal adjustments */
+.start-screen.dark .modal-content {
+  --modal-bg: #1f2937;
+  --modal-text: #d1d5db;
+}
