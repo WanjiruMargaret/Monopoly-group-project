@@ -1,5 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import Board from './components/Board'
 import './GameStartScreen.css'
 import App from './Apps'
 
@@ -10,6 +11,7 @@ const root = createRoot(document.getElementById('root'))
 root.render(
   <StrictMode>
     <GameStartScreen />
-     <App/>
+    <Board />
+    <App />
   </StrictMode>
 )
